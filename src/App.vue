@@ -1,7 +1,7 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
   <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
-  <DatoImage :data="responsiveImage" :lazy-load="true" />
+  <DatoImage :data="responsiveImage" />
 </template>
 
 <script lang="ts">

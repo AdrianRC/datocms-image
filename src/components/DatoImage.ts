@@ -63,12 +63,13 @@ export default defineComponent({
       default: true,
     },
     pictureStyle: {
-      type: Function as PropType<() => void>, //type object instead?
-      default: () => {},
+      type: Object,
+      default: {},
     },
     rootStyle: {
-      type: Function as PropType<() => void>, //type object instead?
-      default: () => {},
+      //Is this necessary? Vue does automatic passthrough for class + style
+      type: Object,
+      default: {},
     },
     explicitWidth: {
       type: Boolean,
@@ -177,11 +178,11 @@ export default defineComponent({
         },
         [
           h("img", {
-            class: props.pictureClass,
+            class: props.pictureClass, //should this go on picture elem?
             style: {
               display: "block",
               width: props.explicitWidth ? `${props.data.width}px` : "100%",
-              ...props.pictureStyle,
+              ...props.pictureStyle, //should this go on picture elem?
             },
             src: `data:image/svg+xml;base64,${universalBtoa(svg.value)}`,
             role: "presentation",
