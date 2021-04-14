@@ -76,12 +76,11 @@ export default defineComponent({
       default: false,
     },
   },
-  setup(props, { attrs }) {
+  setup(props) {
     const observer = ref<IntersectionObserver | null>(null);
+    const el = ref<HTMLElement | null>(null);
     const inView = ref(false);
     const loaded = ref(false);
-
-    const el = ref<HTMLElement | null>(null);
 
     const shouldAddImage = computed(() => {
       if (!props.lazyLoad) {
@@ -144,8 +143,7 @@ export default defineComponent({
 
     function load() {
       // where does srcPlaceholder come from?
-      // if (el.value?.getAttribute("src") !== srcPlaceholder.value) {
-      // }
+      // if (el.value?.getAttribute("src") !== srcPlaceholder.value) {}
       loaded.value = true;
     }
 
@@ -200,7 +198,7 @@ export default defineComponent({
             },
           }),
           shouldAddImage.value
-            ? h("picture", {}, [
+            ? h("picture", null, [
                 props.data.webpSrcSet
                   ? h("source", {
                       srcset: props.data.webpSrcSet,
@@ -229,8 +227,8 @@ export default defineComponent({
                 }),
               ])
             : null,
-          h("noscript", {}, [
-            h("picture", {}, [
+          h("noscript", null, [
+            h("picture", null, [
               props.data.webpSrcSet
                 ? h("source", {
                     srcset: props.data.webpSrcSet,
