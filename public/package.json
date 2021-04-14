@@ -1,0 +1,14 @@
+{
+  "name": "DatoCMS-Image",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/datocms-image.umd.js",
+  "module": "./dist/datocms-image.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/datocms-image.es.js",
+      "require": "./dist/datocms-image.umd.js"
+    }
+  }
+}
